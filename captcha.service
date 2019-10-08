@@ -7,7 +7,7 @@ User=sammy
 Group=www-data
 WorkingDirectory=/server/docker-apps/py_tencent_slider_crack
 Environment="PATH=/server/docker-apps/py_tencent_slider_crack/venv/bin"
-ExecStart=/server/docker-apps/py_tencent_slider_crack/venv/bin/uwsgi uwsgiconfig
+ExecStart=/server/docker-apps/py_tencent_slider_crack/venv/bin/uwsgi /server/docker-apps/py_tencent_slider_crack/uwsgiconfig.ini
 
 [Install]
 WantedBy=multi-user.target
