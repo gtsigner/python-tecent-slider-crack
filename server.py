@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import request, logging, make_response, jsonify
 from utils.download import download_image_as_jpeg
-from utils.crack_qq import qq_mark_detect, get_track
+import utils.crack_qq as crack_qq
 import os
 import uuid
 
@@ -25,9 +25,9 @@ def image():
         if not code == 200:
             return make_response(jsonify({'message': "解析失败Code:" + code}), 400)
         # 2.识别图片
-        res = qq_mark_detect(file)
+        res = crack_qq.qq_mark_pos(file)
         dis = res.x.values[0]
-        tacks = get_track(dis)  # 模拟加速度
+        tacks = crack_qq.get_track_list(dis)  # 模拟加速度
         app.logger.debug("解析成功,需要移动距离:{}".format(dis))
         os.remove(file)  # 解析后删除文件就可以了
         return make_response(jsonify({'message': "解析成功", 'data': {'x': dis, 'list': tacks, 'url': url}}), 200)

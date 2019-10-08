@@ -4,7 +4,6 @@ import random
 import cv2
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import math
 from PIL import Image
 import os
@@ -28,7 +27,6 @@ def pre_process(img_path):
     rect_arc_length = []
     cnt_infos = {}
 
-    colors = plt.cm.Spectral(np.linspace(0, 1, len(contours)))
     for i, cnt in enumerate(contours):
         if cv2.contourArea(cnt) < 5000 or cv2.contourArea(cnt) > 25000:
             continue
@@ -47,14 +45,12 @@ def pre_process(img_path):
                         }
         rect_area.append(w * h)
         rect_arc_length.append(2 * (w + h))
-        cv2.rectangle(img, (x, y), (x + w, y + h), colors[i], 1)
-
     dx = cv2.Sobel(img, -1, 1, 0, ksize=5)
 
     return img, dx, cnt_infos
 
 
-def qq_mark_detect(img_path):
+def qq_mark_pos(img_path):
     img, dx, cnt_infos = pre_process(img_path)
     h, w = img.shape[:2]
     df = pd.DataFrame(cnt_infos).T
@@ -68,17 +64,15 @@ def qq_mark_detect(img_path):
         ['mean', 'score', 'dx_mean']).head(2)
     if len(result):
         x_left = result.x.values[0]
-        cv2.line(img, (x_left, 0), (x_left, h), color=(255, 0, 255))
-        plt.imshow(img)
-        plt.show()
+        # cv2.line(img, (x_left, 0), (x_left, h), color=(255, 0, 255))
+        # plt.imshow(img)
+        # plt.show()
     return result
 
 
-def get_track(distance):
+def get_track_list(distance):
     """
     模拟轨迹 假装是人在操作
-    :param distance:
-    :return:
     """
     # 初速度
     v = 0
