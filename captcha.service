@@ -1,13 +1,13 @@
 [Unit]
-Description=uWSGI instance to serve myproject
+Description=uWSGI captcha project
 After=network.target
 
 [Service]
 User=sammy
 Group=www-data
-WorkingDirectory=/home/sammy/myproject
-Environment="PATH=/home/sammy/myproject/myprojectenv/bin"
-ExecStart=/home/sammy/myproject/myprojectenv/bin/uwsgi --ini myproject.ini
+WorkingDirectory=/server/docker-apps/py_tencent_slider_crack
+Environment="PATH=/server/docker-apps/py_tencent_slider_crack/venv/bin"
+ExecStart=/server/docker-apps/py_tencent_slider_crack/venv/bin/uwsgi uwsgiconfig
 
 [Install]
 WantedBy=multi-user.target

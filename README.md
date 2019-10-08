@@ -23,6 +23,14 @@ pip install -r requirements.txt
 ```
 ## daemonize 
 
+``` shell script
+# 参考 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04
+# Install the latest stable release:
+pip install uwsgi
+# ... or if you want to install the latest LTS (long term support) release,
+pip install https://projects.unbit.it/downloads/uwsgi-lts.tar.gz
+```
+
 
 
 ``` shell script
