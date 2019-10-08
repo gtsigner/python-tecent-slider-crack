@@ -29,6 +29,11 @@ pip install -r requirements.txt
 pip install uwsgi
 # ... or if you want to install the latest LTS (long term support) release,
 pip install https://projects.unbit.it/downloads/uwsgi-lts.tar.gz
+
+# 创建ln 
+cp captcha.service /etc/systemd/system/captcha.service
+systemctl enable captcha.service
+systemctl start captcha.service
 ```
 
 
@@ -38,7 +43,22 @@ uwsgi --ini /usr/local/nginx/html/myblog/uwsgiconfig.ini
 
 #后台运行
 uwsgi --ini /usr/local/nginx/html/myblog/uwsgiconfig.ini --daemonize /usr/local/nginx/html/myblog/myblog.out
+
+```
+
+# 是用nginx做代理
+
+在nginx部分做一个代理
+
+``` text
+        location /tx/ {
+            add_header Access-Control-Allow-Origin *;
+            include        uwsgi_params;
+            uwsgi_pass     127.0.0.1:8008;
+        }
+
 ``` 
+
 
 ## 访问api
 
@@ -49,7 +69,6 @@ http://127.0.0.1:5000/tx/image
 POST /tx/image HTTP/1.1
 Host:host
 Content-Type: application/json
-User-Agent: PostmanRuntime/7.17.1
 Accept: */*
 Cache-Control: no-cache
 Accept-Encoding: gzip, deflate
