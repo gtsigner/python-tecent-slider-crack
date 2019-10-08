@@ -39,3 +39,36 @@ uwsgi --ini /usr/local/nginx/html/myblog/uwsgiconfig.ini
 #后台运行
 uwsgi --ini /usr/local/nginx/html/myblog/uwsgiconfig.ini --daemonize /usr/local/nginx/html/myblog/myblog.out
 ``` 
+
+## 访问api
+
+请求图片识别和加速度模拟
+``` text
+http://127.0.0.1:5000/tx/image
+
+POST /tx/image HTTP/1.1
+Host:host
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.17.1
+Accept: */*
+Cache-Control: no-cache
+Accept-Encoding: gzip, deflate
+Content-Length: 1055
+Connection: keep-alive
+cache-control: no-cache
+
+{
+    "url": "图片的地址"
+}
+
+返回数据
+
+{
+    "data": {
+        "list": [],//模拟的点
+        "url": "",//图片地址
+        "x": 515,//【偏移
+    },
+    "message": "解析成功"
+}
+```
