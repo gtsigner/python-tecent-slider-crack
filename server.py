@@ -28,7 +28,7 @@ def image():
         res = crack_qq.qq_mark_pos(file)
         dis = res.x.values[0]
         tacks = crack_qq.get_track_list(dis)  # 模拟加速度
-        app.logger.debug("解析成功,需要移动距离:{}".format(dis))
+        app.logger.debug("解析成功,需要移动距离:{},点数:{}".format(dis, len(tacks)))
         os.remove(file)  # 解析后删除文件就可以了
         return make_response(jsonify({'message': "解析成功", 'data': {'x': dis, 'list': tacks, 'url': url}}), 200)
     except Exception as e:

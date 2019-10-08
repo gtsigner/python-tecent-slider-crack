@@ -77,7 +77,7 @@ def get_track_list(distance):
     # 初速度
     v = 0
     # 单位时间为0.2s来统计轨迹，轨迹即0.2内的位移
-    t = 0.22
+    t = 0.2
     # 位移/轨迹列表，列表内的一个元素代表0.2s的位移
     tracks = []
     # 当前的位移
@@ -85,7 +85,7 @@ def get_track_list(distance):
     # 到达mid值开始减速
     mid = distance * 7 / 8
 
-    distance += 20  # 先滑过一点，最后再反着滑动回来
+    distance += 10  # 先滑过一点，最后再反着滑动回来
     # a = random.randint(1,3)
     while current < distance:
         if current < mid:
@@ -107,7 +107,7 @@ def get_track_list(distance):
         v = v0 + a * t
 
     # 反着滑动到大概准确位置
-    for i in range(8):
+    for i in range(4):
         tracks.append(-random.randint(2, 3))
     for i in range(4):
         tracks.append(-random.randint(1, 3))

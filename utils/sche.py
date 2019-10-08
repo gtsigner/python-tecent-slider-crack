@@ -29,9 +29,6 @@ def start_chrome():
     time.sleep(2)
     url = driver.execute_script('return $("#tcaptcha_iframe")[0].contentDocument.querySelector("#slideBg").src')
     # 1.拦截所有请求
-    print(url)
-    time.sleep(20)
-    driver.close()
 
 
 # https://www.jianshu.com/p/1531e12f8852
