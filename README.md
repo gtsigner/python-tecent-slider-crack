@@ -6,7 +6,7 @@
 
 原文地址：https://segmentfault.com/a/1190000020618430
 
-
+参考项目：https://github.com/shuxue051/captcha_crack
 ## 安装python环境
 
 参考：https://janikarhunen.fi/how-to-install-python-3-6-1-on-centos-7
