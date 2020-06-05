@@ -2,7 +2,7 @@ certifi==2019.9.11
 chardet==3.0.4
 Click==7.0
 cycler==0.10.0
-Django==2.2.8
+Django==2.2.13
 download-image==1.0.0
 Flask==1.1.1
 idna==2.8
